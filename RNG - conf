@@ -1,0 +1,38 @@
+
+
+RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG, ENABLE);
+RNG_Cmd(ENABLE);
+
+
+random = 0;
+
+while(RNG_GetFlagStatus(RNG_FLAG_DRDY)== RESET)
+      {
+      }
+random=RNG_GetRandomNumber();  //przypisanie do zmiennej 
+
+Serial_PutString("Wypisujemy liczbę");    //Print a string on the HyperTerminal
+Serial_PutChar(random);   // randomowa liczba
+
+
+***********************************
+
+proste funkcje
+
+RNG_GetFlagStatus
+Sprawdzanie statusu flagi
+
+RNG_ClearFlag
+czyszczenie flagi   - void
+
+RNG_GetITStatus 
+Checks whether the specified RNG interrupt has occurred or not.
+
+RNG_ClearITPendingBit
+Clears the RNG interrupt pending bit. - void
+
+
+RNG_ITConfig
+Enables or disables the RNG interrupt.  - void
+
+ 	
